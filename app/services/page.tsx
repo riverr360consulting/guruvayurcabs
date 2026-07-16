@@ -1,15 +1,17 @@
 import PageHeader from "@/components/PageHeader";
-import PopularServices from "@/components/PopularServices";
+import ServiceFleetListing from "@/components/ServiceFleetListing";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function ServicesPage() {
   return (
     <>
       <PageHeader
-        title="Our Services"
-        description="Everything you need to get around Guruvayur and beyond"
+        title="Services & Rates"
+        description="Every route, every vehicle, transparent pricing — all in one place"
       />
+      <ServiceFleetListing />
       <div className="pb-16">
-        <PopularServices />
+        <WhyChooseUs />
       </div>
     </>
   );
