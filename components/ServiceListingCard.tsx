@@ -17,11 +17,13 @@ import {
 } from "lucide-react";
 import type { serviceListings, fleet } from "@/lib/site-config";
 import FleetCard from "@/components/FleetCard";
+import FleetCarousel from "@/components/FleetCarousel";
 
 const categoryIconMap: Record<string, LucideIcon> = {
   TrainFront,
   PlaneTakeoff,
   Landmark,
+  MapPinned,
 };
 
 const featureIconMap: Record<string, LucideIcon> = {
@@ -98,12 +100,12 @@ export default function ServiceListingCard({
           </div>
         </div>
 
-        {/* Right: fleet + rates grid */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-          {fleet.map((car) => (
-            <FleetCard key={car.name} car={car} />
+        {/* Right: same fleet card showcase as the homepage, carousel-scrollable */}
+        <FleetCarousel>
+          {fleet.map((vehicle) => (
+            <FleetCard key={vehicle.id} vehicle={vehicle} />
           ))}
-        </div>
+        </FleetCarousel>
       </div>
     </div>
   );

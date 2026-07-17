@@ -19,11 +19,13 @@ import {
 } from "lucide-react";
 import { fleet, serviceListings } from "@/lib/site-config";
 import FleetCard from "@/components/FleetCard";
+import FleetCarousel from "@/components/FleetCarousel";
 
 const categoryIconMap: Record<string, LucideIcon> = {
   TrainFront,
   PlaneTakeoff,
   Landmark,
+  MapPinned,
 };
 
 const featureIconMap: Record<string, LucideIcon> = {
@@ -87,8 +89,8 @@ export default async function ServiceDetailPage({
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_1fr]">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
           <div>
             <h2 className="text-lg font-bold text-brand-900">
               About this service
@@ -132,12 +134,14 @@ export default async function ServiceDetailPage({
 
           <div>
             <h2 className="text-lg font-bold text-brand-900">
-              Fleet & Rates for This Route
+              Fleet & Rates
             </h2>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              {fleet.map((car) => (
-                <FleetCard key={car.name} car={car} />
-              ))}
+            <div className="mt-4">
+              <FleetCarousel>
+                {fleet.map((vehicle) => (
+                  <FleetCard key={vehicle.id} vehicle={vehicle} />
+                ))}
+              </FleetCarousel>
             </div>
           </div>
         </div>
