@@ -139,7 +139,7 @@ export default async function ServiceDetailPage({
             <div className="mt-4">
               <FleetCarousel>
                 {fleet.map((vehicle) => (
-                  <FleetCard key={vehicle.id} vehicle={vehicle} />
+                  <FleetCard key={vehicle.id} vehicle={vehicle} pricingStyle="detailed" />
                 ))}
               </FleetCarousel>
             </div>

@@ -9,7 +9,7 @@ export default function OurFleet() {
       <SectionHeading title="Our Fleet" />
 
       <div className="mt-10">
-        <FleetCarousel>
+        <FleetCarousel desktopVisible={4}>
           {fleet.map((vehicle) => (
             <FleetCard key={vehicle.id} vehicle={vehicle} />
           ))}

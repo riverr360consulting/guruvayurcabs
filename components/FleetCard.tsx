@@ -4,7 +4,13 @@ import type { fleet } from "@/lib/site-config";
 
 type Vehicle = (typeof fleet)[number];
 
-export default function FleetCard({ vehicle }: { vehicle: Vehicle }) {
+export default function FleetCard({
+  vehicle,
+  pricingStyle = "compact",
+}: {
+  vehicle: Vehicle;
+  pricingStyle?: "compact" | "detailed";
+}) {
   return (
     <div className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-card">
       <div className="relative h-40 w-full bg-brand-50 p-3">
@@ -31,14 +37,25 @@ export default function FleetCard({ vehicle }: { vehicle: Vehicle }) {
           </span>
         </div>
 
-        <div className="mt-3 flex items-baseline justify-between border-t border-brand-50 pt-3">
-          <span className="text-[10px] font-medium text-brand-950/40">
-            Starting from
-          </span>
-          <span className="text-lg font-extrabold text-brand-700">
-            ₹{vehicle.perKmRate}/km
-          </span>
-        </div>
+        {pricingStyle === "detailed" ? (
+          <div className="mt-3 border-t border-brand-50 pt-3 text-center">
+            <span className="text-2xl font-extrabold text-brand-700">
+              ₹{vehicle.perKmRate}
+            </span>
+            <p className="mt-0.5 text-[10px] font-medium text-brand-950/40">
+              Starting from ₹{vehicle.perKmRate}/km
+            </p>
+          </div>
+        ) : (
+          <div className="mt-3 flex items-baseline justify-between border-t border-brand-50 pt-3">
+            <span className="text-[10px] font-medium text-brand-950/40">
+              Starting from
+            </span>
+            <span className="text-lg font-extrabold text-brand-700">
+              ₹{vehicle.perKmRate}/km
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

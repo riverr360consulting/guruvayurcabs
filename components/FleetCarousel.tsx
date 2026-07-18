@@ -5,8 +5,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function FleetCarousel({
   children,
+  desktopVisible = 3,
 }: {
   children: React.ReactNode[];
+  desktopVisible?: 3 | 4;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -18,6 +20,11 @@ export default function FleetCarousel({
     track.scrollBy({ left: direction * step, behavior: "smooth" });
   }
 
+  const itemWidthClass =
+    desktopVisible === 4
+      ? "w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-72px)/4)]"
+      : "w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-48px)/3)]";
+
   return (
     <div className="relative">
       <div
@@ -25,11 +32,7 @@ export default function FleetCarousel({
         className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {children.map((child, i) => (
-          <div
-            key={i}
-            data-carousel-item
-            className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-48px)/3)]"
-          >
+          <div key={i} data-carousel-item className={itemWidthClass}>
             {child}
           </div>
         ))}
