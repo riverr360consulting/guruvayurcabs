@@ -149,7 +149,7 @@ export const serviceListings = [
       "Visit all four sacred Nalambalam temples in a single day trip from Guruvayur, with a comfortable AC cab and driver for the entire circuit.",
     detail:
       "The Nalambalam circuit — Thriprayar, Thrichambaram, Moozhikkulam and Kudalmanikyam — is a popular one-day pilgrimage from Guruvayur. We provide a car and driver for the full route, timed so you can comfortably visit all four temples in a single day. The fare below is fixed for the entire circuit — no meter, no surprises at the end of the day.",
-    fares: { Sedan: 3700, Ertiga: 4000, Innova: 5000 },
+    fares: { Sedan: 3700, Ertiga: 4000, Innova: 5000, SUV: 4500, "Tempo Traveller": 9000 },
     features: [
       { icon: "Landmark", label: "All 4 Nalambalam Temples" },
       { icon: "Timer", label: "Full Day Circuit" },
@@ -166,7 +166,7 @@ export const serviceListings = [
       "Quick one-way transfer from Guruvayur to Thrissur (Trichur) — for the railway station, hospital visits, shopping, or a day into the city.",
     detail:
       "Thrissur (Trichur) is about 30 km from Guruvayur and one of our most frequently booked short transfers. Whether you're headed to the railway station, a hospital appointment, or into the city for shopping, we run this route daily. The fare below is a fixed one-way fare, so there's nothing to negotiate at drop-off.",
-    fares: { Sedan: 1200, Ertiga: 1300, Innova: 1700 },
+    fares: { Sedan: 1200, Ertiga: 1300, Innova: 1700, SUV: 1500, "Tempo Traveller": 3500 },
     features: [
       { icon: "MapPin", label: "Direct One-Way Transfer" },
       { icon: "Receipt", label: "Fixed Fare, No Hidden Charges" },
@@ -183,7 +183,7 @@ export const serviceListings = [
       "Reliable one-way transfer from Guruvayur to Shornur Junction, timed for onward train connections.",
     detail:
       "Shornur Junction is a major railway hub, and many of our customers use this route to catch long-distance trains. We build in buffer time so you reach the station comfortably ahead of departure, even during peak traffic. The fare below is a fixed one-way fare.",
-    fares: { Sedan: 1800, Ertiga: 2000, Innova: 2500 },
+    fares: { Sedan: 1800, Ertiga: 2000, Innova: 2500, SUV: 2200, "Tempo Traveller": 4000 },
     features: [
       { icon: "MapPin", label: "Direct One-Way Transfer" },
       { icon: "Timer", label: "Timed for Train Connections" },
@@ -200,7 +200,7 @@ export const serviceListings = [
       "One-way transfer from Guruvayur to Kuttipuram Railway Station, timed for your train connection.",
     detail:
       "Kuttipuram is a well-connected railway station on the Shoranur–Mangalore line, often used by our customers making onward rail connections. We time pickups with enough buffer to reach comfortably ahead of departure. The fare below is a fixed one-way fare.",
-    fares: { Sedan: 1500, Ertiga: 1700, Innova: 2200 },
+    fares: { Sedan: 1500, Ertiga: 1700, Innova: 2200, SUV: 1800, "Tempo Traveller": 4000 },
     features: [
       { icon: "MapPin", label: "Direct One-Way Transfer" },
       { icon: "Timer", label: "Timed for Train Connections" },
@@ -217,7 +217,7 @@ export const serviceListings = [
       "Comfortable one-way transfer from Guruvayur to Cochin International Airport, with fixed fares and flight-timed pickups.",
     detail:
       "Cochin International Airport (COK) is one of the busiest routes we run from Guruvayur, whether it's an early departure or a late-night arrival. The fare below is a fixed one-way fare; for travel beyond this route, our standard per-km rates apply (Sedan ₹18/km, Ertiga ₹20/km, Innova ₹25/km).",
-    fares: { Sedan: 3200, Ertiga: 3500, Innova: 4300 },
+    fares: { Sedan: 3200, Ertiga: 3500, Innova: 4300, SUV: 4000, "Tempo Traveller": 7000 },
     features: [
       { icon: "RadioTower", label: "Flight Tracking" },
       { icon: "Timer", label: "Timely Transfers" },

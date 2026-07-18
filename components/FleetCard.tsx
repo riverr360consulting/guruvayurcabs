@@ -7,9 +7,11 @@ type Vehicle = (typeof fleet)[number];
 export default function FleetCard({
   vehicle,
   pricingStyle = "compact",
+  fixedPrice,
 }: {
   vehicle: Vehicle;
   pricingStyle?: "compact" | "detailed";
+  fixedPrice?: number;
 }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-card">
@@ -40,7 +42,7 @@ export default function FleetCard({
         {pricingStyle === "detailed" ? (
           <div className="mt-3 border-t border-brand-50 pt-3 text-center">
             <span className="text-2xl font-extrabold text-brand-700">
-              ₹{vehicle.perKmRate}
+              ₹{fixedPrice ?? vehicle.perKmRate}
             </span>
             <p className="mt-0.5 text-[10px] font-medium text-brand-950/40">
               Starting from ₹{vehicle.perKmRate}/km

@@ -102,9 +102,20 @@ export default function ServiceListingCard({
 
         {/* Right: same fleet card showcase as the homepage, carousel-scrollable */}
         <FleetCarousel>
-          {fleet.map((vehicle) => (
-            <FleetCard key={vehicle.id} vehicle={vehicle} />
-          ))}
+          {fleet.map((vehicle) => {
+            const fixedPrice =
+              "fares" in listing
+                ? (listing.fares as Record<string, number>)[vehicle.name]
+                : undefined;
+            return (
+              <FleetCard
+                key={vehicle.id}
+                vehicle={vehicle}
+                pricingStyle="detailed"
+                fixedPrice={fixedPrice}
+              />
+            );
+          })}
         </FleetCarousel>
       </div>
     </div>

@@ -138,9 +138,20 @@ export default async function ServiceDetailPage({
             </h2>
             <div className="mt-4">
               <FleetCarousel>
-                {fleet.map((vehicle) => (
-                  <FleetCard key={vehicle.id} vehicle={vehicle} pricingStyle="detailed" />
-                ))}
+                {fleet.map((vehicle) => {
+                  const fixedPrice =
+                    "fares" in listing
+                      ? (listing.fares as Record<string, number>)[vehicle.name]
+                      : undefined;
+                  return (
+                    <FleetCard
+                      key={vehicle.id}
+                      vehicle={vehicle}
+                      pricingStyle="detailed"
+                      fixedPrice={fixedPrice}
+                    />
+                  );
+                })}
               </FleetCarousel>
             </div>
           </div>
