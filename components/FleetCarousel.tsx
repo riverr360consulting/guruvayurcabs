@@ -28,7 +28,7 @@ export default function FleetCarousel({
           <div
             key={i}
             data-carousel-item
-            className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[23%]"
+            className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-48px)/3)]"
           >
             {child}
           </div>

@@ -73,7 +73,7 @@ export default async function ServiceDetailPage({
   return (
     <>
       <section className="bg-brand-950">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white">
             <CategoryIcon className="h-6 w-6" />
           </span>

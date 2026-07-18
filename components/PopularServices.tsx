@@ -1,22 +1,13 @@
-import {
-  Camera,
-  Car,
-  Gem,
-  Landmark,
-  Plane,
-  PlaneLanding,
-  PlaneTakeoff,
-} from "lucide-react";
+import { Camera, Car, Gem, Landmark, MapPinned, PlaneTakeoff } from "lucide-react";
 import { popularServices } from "@/lib/site-config";
 
 const iconMap = {
   Car,
-  Plane,
   PlaneTakeoff,
-  PlaneLanding,
   Landmark,
   Camera,
   Gem,
+  MapPinned,
 };
 
 export default function PopularServices() {
