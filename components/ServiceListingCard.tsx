@@ -87,7 +87,7 @@ export default function ServiceListingCard({
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/contact"
+              href={`/booking?service=${encodeURIComponent(listing.title)}`}
               className="inline-flex h-11 items-center gap-2 rounded-full bg-brand-700 px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
             >
               Book Now <ArrowRight className="h-4 w-4" />

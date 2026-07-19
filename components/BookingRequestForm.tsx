@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, Clock, MapPin, Search } from "lucide-react";
+import { Calendar, Clock, MapPin, Phone, User } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,15 +11,24 @@ import { Button } from "@/components/ui/button";
 const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
 
 type FormState = {
+  name: string;
+  phone: string;
   pickup: string;
   drop: string;
   date: string;
   time: string;
 };
 
-const initialState: FormState = { pickup: "", drop: "", date: "", time: "" };
+const initialState: FormState = {
+  name: "",
+  phone: "",
+  pickup: "",
+  drop: "",
+  date: "",
+  time: "",
+};
 
-export default function BookingForm({
+export default function BookingRequestForm({
   serviceName,
 }: {
   serviceName?: string;
@@ -44,8 +53,10 @@ export default function BookingForm({
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: "New Cab Booking Request - Guruvayur Cabs",
-          from_name: "Guruvayur Cabs Website",
+          from_name: form.name || "Guruvayur Cabs Website",
           service_interested: serviceName || "Not specified",
+          customer_name: form.name,
+          phone_number: form.phone,
           pickup_location: form.pickup,
           drop_location: form.drop,
           date: form.date,
@@ -67,18 +78,34 @@ export default function BookingForm({
 
   return (
     <Card className="p-6 shadow-form sm:p-8">
-      <h2 className="mb-1 text-xl font-bold text-brand-900">Book Your Ride</h2>
       {serviceName && (
-        <p className="mb-4 inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
+        <p className="mb-5 inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
           Booking for: {serviceName}
         </p>
       )}
-      {!serviceName && <div className="mb-5" />}
 
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:items-end"
-      >
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Field label="Your Name">
+          <IconInput
+            icon={<User className="h-4 w-4" />}
+            placeholder="Enter your name"
+            value={form.name}
+            onChange={(v) => handleChange("name", v)}
+            required
+          />
+        </Field>
+
+        <Field label="Phone Number">
+          <IconInput
+            icon={<Phone className="h-4 w-4" />}
+            type="tel"
+            placeholder="Enter your phone number"
+            value={form.phone}
+            onChange={(v) => handleChange("phone", v)}
+            required
+          />
+        </Field>
+
         <Field label="Pickup Location">
           <IconInput
             icon={<MapPin className="h-4 w-4" />}
@@ -122,20 +149,20 @@ export default function BookingForm({
         <Button
           type="submit"
           disabled={status === "loading"}
-          className="h-11 w-full lg:w-auto"
+          className="h-11 w-full sm:col-span-2"
         >
-          <Search className="h-4 w-4" />
-          {status === "loading" ? "Searching..." : "Search Cabs"}
+          {status === "loading" ? "Sending..." : "Confirm Booking Request"}
         </Button>
       </form>
 
       {status === "success" && (
-        <p className="mt-3 text-sm font-medium text-brand-600">
-          Thanks! We&apos;ve received your request and will call you shortly to confirm.
+        <p className="mt-4 text-sm font-medium text-brand-600">
+          Thanks! We&apos;ve received your booking request and will call or
+          WhatsApp you shortly to confirm.
         </p>
       )}
       {status === "error" && (
-        <p className="mt-3 text-sm font-medium text-red-600">
+        <p className="mt-4 text-sm font-medium text-red-600">
           Something went wrong. Please call or WhatsApp us directly.
         </p>
       )}

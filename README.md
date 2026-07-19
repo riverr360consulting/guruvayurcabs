@@ -47,14 +47,34 @@ Web3Forms from the browser.
 
 ## 4. Swap in real photos (Cloudinary)
 
-Fleet and hero images currently point to Unsplash placeholder URLs so the
-site builds and looks right out of the box. To use your own photos:
+The hero and fleet sections currently use **hand-drawn SVG illustrations**
+(a temple gopuram + taxi in the hero, simple vehicle silhouettes for each
+fleet card) instead of stock photos. This was a deliberate choice: earlier
+placeholder photo URLs pointed at guessed Unsplash IDs that didn't actually
+exist and silently failed to load, and hotlinking someone else's stock photo
+isn't something to ship on a real business site anyway. The SVGs always
+render, no external requests, no broken images.
 
-1. Create a free Cloudinary account: https://cloudinary.com
-2. Upload your car and hero photos.
-3. Copy each image's HTTPS delivery URL.
-4. Replace the URLs in `lib/site-config.ts` (`fleet` array) and
-   `components/Hero.tsx` (background image `url(...)`).
+To use your own real photos once you have them (e.g. a professional shot of
+the temple with one of your cars in front, similar to the reference design):
+
+**Hero background:**
+1. Upload your photo to Cloudinary (free tier): https://cloudinary.com
+2. Copy its HTTPS delivery URL.
+3. In `components/Hero.tsx`, replace `<HeroBackground />` with a background
+   image div, e.g.:
+   ```tsx
+   <div
+     className="absolute inset-0 bg-cover bg-center"
+     style={{ backgroundImage: "url('https://res.cloudinary.com/.../hero.jpg')" }}
+   />
+   ```
+
+**Fleet cards:**
+1. Upload a photo per vehicle to Cloudinary.
+2. In `lib/site-config.ts`, set the `image` field for that car to the
+   Cloudinary URL (e.g. `image: "https://res.cloudinary.com/.../sedan.jpg"`).
+   Leaving `image: ""` keeps the SVG illustration as a fallback.
 
 `next.config.ts` already allows `res.cloudinary.com` and
 `images.unsplash.com` as remote image sources — add any other domain you
