@@ -1,15 +1,15 @@
 export const siteConfig = {
   name: "Guruvayur Cabs",
   tagline: "Safe. Reliable. Comfortable.",
-  phone: "+91 98 09 80 08 00",
-  phoneHref: "tel:+919809800800",
-  whatsappHref: "https://wa.me/919809800800",
+  phone: "+91 90 89 80 08 00",
+  phoneHref: "tel:+919089800800",
+  whatsappHref: "https://wa.me/919089800800",
   email: "info@guruvayurcabs.com",
   address: "Guruvayur, Kerala, India",
   socials: {
     facebook: "https://facebook.com/guruvayurcabs",
     instagram: "https://instagram.com/guruvayurcabs",
-    whatsapp: "https://wa.me/919809800800",
+    whatsapp: "https://wa.me/919089800800",
   },
 };
 
