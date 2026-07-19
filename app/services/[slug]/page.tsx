@@ -8,6 +8,7 @@ import {
   Landmark,
   MapPin,
   MapPinned,
+  MessageCircle,
   PlaneTakeoff,
   RadioTower,
   Receipt,
@@ -17,7 +18,7 @@ import {
   UserRound,
   type LucideIcon,
 } from "lucide-react";
-import { fleet, serviceListings } from "@/lib/site-config";
+import { fleet, serviceListings, siteConfig } from "@/lib/site-config";
 import FleetCard from "@/components/FleetCard";
 import FleetCarousel from "@/components/FleetCarousel";
 
@@ -123,6 +124,17 @@ export default async function ServiceDetailPage({
               >
                 Book Now <ArrowRight className="h-4 w-4" />
               </Link>
+              <a
+                href={`${siteConfig.whatsappHref}?text=${encodeURIComponent(
+                  `Hi, I'd like to book: ${listing.title}`
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-[#25D366] px-6 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe57]"
+              >
+                <MessageCircle className="h-4 w-4" fill="currentColor" strokeWidth={0} />
+                WhatsApp
+              </a>
               <Link
                 href="/services"
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-brand-200 px-6 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
